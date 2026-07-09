@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Oficial - Empório-E</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Topo da Loja (Barra Limpa com a Logo Oficial do Cliente) -->
+    <header class="header">
+        <button id="menu-btn" class="menu-btn">☰</button>
+        <img src="imagem/logo1.png" alt="Logo Empório-E" class="logo-img">
+        <div class="spacer"></div>
+    </header>
+
+    <!-- Carrossel de Banners (Alternando centro1.jpeg e centro2.jpeg a cada 6 segundos) -->
+    <section class="carrossel-container">
+        <button id="prev-btn" class="seta-btn left">❮</button>
+        <div class="carrossel-slides">
+            <div class="slide active">
+                <img src="imagem/centro1.jpeg" alt="Banner Principal" class="banner-img">
+            </div>
+            <div class="slide">
+                <img src="imagem/centro2.jpeg" alt="Banner Alternativo" class="banner-img">
+            </div>
+        </div>
+        <button id="next-btn" class="seta-btn right">❯</button>
+    </section>
+
+    <!-- Barra de Busca -->
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Pesquise por marca ou modelo...">
+    </div>
+
+    <!-- MENU LATERAL DA LOJA (Branco, Cinza e Preto) -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <button id="close-btn" class="close-btn">&times;</button>
+        </div>
+        
+        <ul class="menu-lista">
+            <li><a href="index.html" class="menu-link" onclick="sessionStorage.removeItem('filtroCategoria')">Início</a></li>
+            
+            <!-- CATEGORIA PRINCIPAL: PRODUTOS -->
+            <li class="has-submenu">
+                <a href="#" class="menu-link toggle-btn">Produtos <span class="seta-icone">❯</span></a>
+                
+                <ul class="submenu">
+                    <!-- 1. Sapatos -->
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Sapatos <span class="seta-icone">❯</span></a>
+                        <ul class="submenu sub-sub-menu">
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="sapatos">Ver Todos</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 2. Roupas -->
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Camisas <span class="seta-icone">❯</span></a>
+                        <ul class="submenu sub-sub-menu">
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="camisas">Ver Todos</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 2.1 Calças -->
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Calças <span class="seta-icone">❯</span></a>
+                        <ul class="submenu sub-sub-menu">
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="calcas">Ver Todos</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 3. Chapéus -->
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Chapéus <span class="seta-icone">❯</span></a>
+                        <ul class="submenu sub-sub-menu">
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="chapeus">Ver Todos</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 4. Acessórios -->
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Acessórios <span class="seta-icone">❯</span></a>
+                        <ul class="submenu sub-sub-menu">
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="acessorios">Ver Todos</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 5. Conjuntos (Kits) -->
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Conjuntos (Kits) <span class="seta-icone">❯</span></a>
+                        <ul class="submenu sub-sub-menu">
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="kits">Ver Todos</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Moletons <span class="seta-icone">❯</span></a>
+                        <ul class="submenu sub-sub-menu">
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="moletons">Ver Todos</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Shorts <span class="seta-icone">❯</span></a>
+                        <ul class="submenu sub-sub-menu">
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="shorts">Ver Todos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Título da Vitrine -->
+    <h2 style="padding: 20px 15px 5px 15px; max-width: 100%; font-size: 24px; font-weight: bold; color: var(--cor-segundaria); margin-left: 25px;">Todos os Produtos</h2>
+
+    <!-- Grade de Vitrine (todos os produtos; os 4 com data-destaque=true aparecem por padrao) -->
+    <main class="products-grid" id="products-grid">
+
+        <a href="produto-tenis-air-force-corda-branco.html" data-marca="sapatos" data-destaque="true" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Tenis/Air force corda branco.jpeg" alt="Tênis Air Force Corda Branco">
+                <h4 class="product-title">Tênis Air Force Corda Branco</h4>
+                <p class="product-price">R$ 159,90</p>
+                <p class="product-parcel">Tam: 38, 39, 40, 41, 42</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-tenis-air-force-corda-preto.html" data-marca="sapatos" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Tenis/Air force corda preto.jpeg" alt="Tênis Air Force Corda Preto">
+                <h4 class="product-title">Tênis Air Force Corda Preto</h4>
+                <p class="product-price">R$ 159,90</p>
+                <p class="product-parcel">Tam: 38, 39, 40, 41, 42</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-tenis-nike-running-bege.html" data-marca="sapatos" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Tenis/Nike Running bege.jpeg" alt="Tênis Nike Running Bege">
+                <h4 class="product-title">Tênis Nike Running Bege</h4>
+                <p class="product-price">R$ 179,90</p>
+                <p class="product-parcel">Tam: 34, 35, 36, 37, 38, 39</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-tenis-nike-running-preto.html" data-marca="sapatos" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Tenis/Nike Running preto.jpeg" alt="Tênis Nike Running Preto">
+                <h4 class="product-title">Tênis Nike Running Preto</h4>
+                <p class="product-price">R$ 179,90</p>
+                <p class="product-parcel">Tam: 34, 35, 36, 37, 38, 39</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-tenis-new-balance-branco-azul.html" data-marca="sapatos" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Tenis/New Balance Branco Azul.jpeg" alt="Tênis New Balance Branco Azul">
+                <h4 class="product-title">Tênis New Balance Branco Azul</h4>
+                <p class="product-price">R$ 199,99</p>
+                <p class="product-parcel">Tam: 40</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-tenis-new-balance-cinza.html" data-marca="sapatos" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Tenis/New Balance Cinza.jpeg" alt="Tênis New Balance Cinza">
+                <h4 class="product-title">Tênis New Balance Cinza</h4>
+                <p class="product-price">R$ 199,99</p>
+                <p class="product-parcel">Tam: 42</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-1.html" data-marca="camisas" data-destaque="true" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (1).jpeg" alt="Camisa Overside 1">
+                <h4 class="product-title">Camisa Overside 1</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-2.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (2).jpeg" alt="Camisa Overside 2">
+                <h4 class="product-title">Camisa Overside 2</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-3.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (3).jpeg" alt="Camisa Overside 3">
+                <h4 class="product-title">Camisa Overside 3</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-4.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (4).jpeg" alt="Camisa Overside 4">
+                <h4 class="product-title">Camisa Overside 4</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-5.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (5).jpeg" alt="Camisa Overside 5">
+                <h4 class="product-title">Camisa Overside 5</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-6.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (6).jpeg" alt="Camisa Overside 6">
+                <h4 class="product-title">Camisa Overside 6</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-7.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (7).jpeg" alt="Camisa Overside 7">
+                <h4 class="product-title">Camisa Overside 7</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-8.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (8).jpeg" alt="Camisa Overside 8">
+                <h4 class="product-title">Camisa Overside 8</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-9.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (9).jpeg" alt="Camisa Overside 9">
+                <h4 class="product-title">Camisa Overside 9</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-overside-10.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa Overside (10).jpeg" alt="Camisa Overside 10">
+                <h4 class="product-title">Camisa Overside 10</h4>
+                <p class="product-price">R$ 149,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-polo-1.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa polo (1).jpeg" alt="Camisa Polo 1">
+                <h4 class="product-title">Camisa Polo 1</h4>
+                <p class="product-price">R$ 109,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-polo-2.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa polo (2).jpeg" alt="Camisa Polo 2">
+                <h4 class="product-title">Camisa Polo 2</h4>
+                <p class="product-price">R$ 109,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-polo-3.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa polo (3).jpeg" alt="Camisa Polo 3">
+                <h4 class="product-title">Camisa Polo 3</h4>
+                <p class="product-price">R$ 109,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-polo-4.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa polo (4).jpeg" alt="Camisa Polo 4">
+                <h4 class="product-title">Camisa Polo 4</h4>
+                <p class="product-price">R$ 109,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-polo-5.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa polo (5).jpeg" alt="Camisa Polo 5">
+                <h4 class="product-title">Camisa Polo 5</h4>
+                <p class="product-price">R$ 109,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-polo-6.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa polo (6).jpeg" alt="Camisa Polo 6">
+                <h4 class="product-title">Camisa Polo 6</h4>
+                <p class="product-price">R$ 109,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-polo-7.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa polo (7).jpeg" alt="Camisa Polo 7">
+                <h4 class="product-title">Camisa Polo 7</h4>
+                <p class="product-price">R$ 109,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-polo-8.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa polo (8).jpeg" alt="Camisa Polo 8">
+                <h4 class="product-title">Camisa Polo 8</h4>
+                <p class="product-price">R$ 109,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-polo-9.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa polo (9).jpeg" alt="Camisa Polo 9">
+                <h4 class="product-title">Camisa Polo 9</h4>
+                <p class="product-price">R$ 109,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-camisa-longa-drift.html" data-marca="camisas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Camisas/Camisa longa drift.jpeg" alt="Camisa Longa Drift">
+                <h4 class="product-title">Camisa Longa Drift</h4>
+                <p class="product-price">R$ 64,90</p>
+                <p class="product-parcel">Tam: Único</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-bone-savas-bege.html" data-marca="chapeus" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Chapeus/Boné Savas Bege.jpeg" alt="Boné Savas Bege">
+                <h4 class="product-title">Boné Savas Bege</h4>
+                <p class="product-price">R$ 74,90</p>
+                <p class="product-parcel">Tam: Único</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-bone-savas-branco.html" data-marca="chapeus" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Chapeus/Boné Savas Branco.jpeg" alt="Boné Savas Branco">
+                <h4 class="product-title">Boné Savas Branco</h4>
+                <p class="product-price">R$ 74,90</p>
+                <p class="product-parcel">Tam: Único</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-bone-savas-preto.html" data-marca="chapeus" data-destaque="true" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Chapeus/Boné Savas Preto.jpeg" alt="Boné Savas Preto">
+                <h4 class="product-title">Boné Savas Preto</h4>
+                <p class="product-price">R$ 74,90</p>
+                <p class="product-parcel">Tam: Único</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-bone-savas-vermelho.html" data-marca="chapeus" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Chapeus/Boné Savas Vermelho.jpeg" alt="Boné Savas Vermelho">
+                <h4 class="product-title">Boné Savas Vermelho</h4>
+                <p class="product-price">R$ 74,90</p>
+                <p class="product-parcel">Tam: Único</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-conjunto-de-time.html" data-marca="kits" data-destaque="true" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Conjuntos/Conjunto de time.jpeg" alt="Conjunto de Time">
+                <h4 class="product-title">Conjunto de Time</h4>
+                <p class="product-price">R$ 199,99</p>
+                <p class="product-parcel">Tam: G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-conjunto-gola-alta-azul.html" data-marca="kits" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Conjuntos/Conjunto gola alta azul.jpeg" alt="Conjunto Gola Alta Azul">
+                <h4 class="product-title">Conjunto Gola Alta Azul</h4>
+                <p class="product-price">R$ 199,99</p>
+                <p class="product-parcel">Tam: G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-conjunto-moletom-nike-azul-escuro.html" data-marca="kits" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Conjuntos/Conjunto moletom nike azul escuro.jpeg" alt="Conjunto Moletom Nike Azul Escuro">
+                <h4 class="product-title">Conjunto Moletom Nike Azul Escuro</h4>
+                <p class="product-price">R$ 209,99</p>
+                <p class="product-parcel">Tam: G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-conjunto-moletom-nike-bege.html" data-marca="kits" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Conjuntos/Conjunto moletom nike bege.jpeg" alt="Conjunto Moletom Nike Bege">
+                <h4 class="product-title">Conjunto Moletom Nike Bege</h4>
+                <p class="product-price">R$ 209,99</p>
+                <p class="product-parcel">Tam: G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-conjunto-moletom-nike-preto.html" data-marca="kits" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Conjuntos/Conjunto moletom nike preto.jpeg" alt="Conjunto Moletom Nike Preto">
+                <h4 class="product-title">Conjunto Moletom Nike Preto</h4>
+                <p class="product-price">R$ 209,99</p>
+                <p class="product-parcel">Tam: G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-conjunto-feminino-branco-nike.html" data-marca="kits" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Conjuntos/Conjunto feminino branco nike.jpeg" alt="Conjunto Feminino Branco Nike">
+                <h4 class="product-title">Conjunto Feminino Branco Nike</h4>
+                <p class="product-price">R$ 204,99</p>
+                <p class="product-parcel">Tam: 38, 39, 40, 41, 42</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-conjunto-feminino-preto-adidas.html" data-marca="kits" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Conjuntos/Conjunto feminino preto adidas.jpeg" alt="Conjunto Feminino Preto Adidas">
+                <h4 class="product-title">Conjunto Feminino Preto Adidas</h4>
+                <p class="product-price">R$ 204,99</p>
+                <p class="product-parcel">Tam: 38, 39, 40, 41, 42</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-conjunto-feminino-preto-e-rosa.html" data-marca="kits" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Conjuntos/Conjunto feminino preto e rosa.jpeg" alt="Conjunto Feminino Preto e Rosa">
+                <h4 class="product-title">Conjunto Feminino Preto e Rosa</h4>
+                <p class="product-price">R$ 204,99</p>
+                <p class="product-parcel">Tam: M, G</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-conjunto-feminino-rosa.html" data-marca="kits" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Conjuntos/Conjunto feminino rosa.jpeg" alt="Conjunto Feminino Rosa">
+                <h4 class="product-title">Conjunto Feminino Rosa</h4>
+                <p class="product-price">R$ 204,99</p>
+                <p class="product-parcel">Tam: M, G</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-moletom-1-cabo.html" data-marca="moletons" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Moletom/Moletom 1 cabo.jpeg" alt="Moletom 1 Cabo">
+                <h4 class="product-title">Moletom 1 Cabo</h4>
+                <p class="product-price">R$ 149,99</p>
+                <p class="product-parcel">Tam: G</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-moletom-2-cabo.html" data-marca="moletons" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Moletom/Moletom 2 cabo.jpeg" alt="Moletom 2 Cabo">
+                <h4 class="product-title">Moletom 2 Cabo</h4>
+                <p class="product-price">R$ 159,90</p>
+                <p class="product-parcel">Tam: G</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-bermuda-facao-nike.html" data-marca="shorts" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Short/Bermuda facão Nike.jpeg" alt="Bermuda Facão Nike">
+                <h4 class="product-title">Bermuda Facão Nike</h4>
+                <p class="product-price">R$ 74,99</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-shorts-moletom.html" data-marca="shorts" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Short/Shorts Moletom.jpeg" alt="Shorts Moletom">
+                <h4 class="product-title">Shorts Moletom</h4>
+                <p class="product-price">R$ 74,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-shorts-drift-1.html" data-marca="shorts" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Short/Shorts drift (1).jpeg" alt="Shorts Drift 1">
+                <h4 class="product-title">Shorts Drift 1</h4>
+                <p class="product-price">R$ 49,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-shorts-drift-2.html" data-marca="shorts" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Short/Shorts drift (2).jpeg" alt="Shorts Drift 2">
+                <h4 class="product-title">Shorts Drift 2</h4>
+                <p class="product-price">R$ 49,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-shorts-drift-3.html" data-marca="shorts" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Short/Shorts drift (3).jpeg" alt="Shorts Drift 3">
+                <h4 class="product-title">Shorts Drift 3</h4>
+                <p class="product-price">R$ 49,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-shorts-drift-4.html" data-marca="shorts" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Short/Shorts drift (4).jpeg" alt="Shorts Drift 4">
+                <h4 class="product-title">Shorts Drift 4</h4>
+                <p class="product-price">R$ 49,90</p>
+                <p class="product-parcel">Tam: M, G, GG</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-calca-jeans-clara-armani.html" data-marca="calcas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Calças/Calça Jeans clara Armani.jpeg" alt="Calça Jeans Clara Armani">
+                <h4 class="product-title">Calça Jeans Clara Armani</h4>
+                <p class="product-price">R$ 179,90</p>
+                <p class="product-parcel">Tam: 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-calca-jeans-ellus.html" data-marca="calcas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Calças/Calça Jeans Ellus.jpeg" alt="Calça Jeans Ellus">
+                <h4 class="product-title">Calça Jeans Ellus</h4>
+                <p class="product-price">R$ 179,90</p>
+                <p class="product-parcel">Tam: 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-calca-jeans-escura-armani.html" data-marca="calcas" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Calças/Calça Jeans escura Armani.jpeg" alt="Calça Jeans Escura Armani">
+                <h4 class="product-title">Calça Jeans Escura Armani</h4>
+                <p class="product-price">R$ 179,90</p>
+                <p class="product-parcel">Tam: 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="produto-cinto-savas-og.html" data-marca="acessorios" data-destaque="false" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/Acessorios/Cintos Savas Og.jpeg" alt="Cinto Savas Og">
+                <h4 class="product-title">Cinto Savas Og</h4>
+                <p class="product-price">R$ 144,90</p>
+                <p class="product-parcel">Tam: Único</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="site-footer">
+        <div class="footer-coluna">
+            <h4>Departamentos</h4>
+            <a href="#" id="footer-inicio">Início</a>
+            <a href="#" id="footer-produtos">Produtos</a>
+        </div>
+
+        <div class="footer-coluna">"
+             <h4>Entre em contato</h4>
+            <a href="https://wa.me/5514991834540" target="_blank">(14) 99183-4540</a>
+            <a href="https://www.instagram.com/emporio_e_outletshop/" target="_blank">Instagram</a>
+        </div>
+
+        <div class="footer-coluna">
+            <h4>Permaneça conectado</h4>
+            <a href="https://www.instagram.com/emporio_e_outletshop/" target="_blank" class="footer-instagram-icone" aria-label="Instagram">
+                <img src="imagem/ig.png" alt="Instagram Empório-E">
+            </a>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5514991834540?text=Olá! Bem vindo a Empório E, Quer saber mais sobre algum produto?" target="_blank" class="whatsapp-flutuante">
+        <img src="imagem/zap1.png" alt="WhatsApp Geral">
+    </a>
+    
+    <script src="script.js"></script>
+</body>
+</html>

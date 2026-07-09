@@ -1,0 +1,505 @@
+/* ==========================================================================
+   1. VARIÁVEIS DE CORES DA LOJA (Branco, Cinza Chumbo e Preto)
+   ========================================================================== */
+:root {
+    --cor-fundo-site: #ffffff;     /* 1° Cor: Branco Puro 🤍 */
+    --cor-segundaria: #2b2d42;     /* 2° Cor: Cinza Chumbo para Textos/Bordas 🩶 */
+    --cor-fundo-menu: #111111;     /* 3° Cor: Preto Fosco Total para o Menu 🖤 */
+    --cor-clara: #ffffff;          
+    --cor-whatsapp: #25D366;       /* Verde Oficial do WhatsApp */
+    --cor-linha-interna: rgba(255, 255, 255, 0.08); /* Linhas internas brancas bem discretas ➖ */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo-site);
+    color: var(--cor-segundaria);
+    width: 100%;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO (Fundo Branco + Controle da Logo PNG 400x100)
+   ========================================================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px; 
+    background: var(--cor-fundo-site);
+    border-bottom: 2px solid var(--cor-segundaria); /* Linha em cinza chumbo */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu-btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--cor-segundaria); /* Botão hambúrguer em cinza chumbo */
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.menu-btn:hover {
+    background-color: rgba(43, 45, 66, 0.08);
+}
+
+.logo-img {
+    max-width: 200px;  
+    max-height: 50px;  
+    width: 100%;
+    height: auto;
+    object-fit: contain; 
+}
+
+.spacer { 
+    width: 42px; 
+}
+
+/* ==========================================================================
+   3. CARROSSEL PREMIUM DE IMAGENS (Efeito Fade - 6 segundos)
+   ========================================================================== */
+.carrossel-container {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.carrossel-slides {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: grid;
+}
+
+.slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    width: 100%;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.seta-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(43, 45, 66, 0.4); 
+    color: var(--cor-clara);
+    border: none;
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.seta-btn.left { left: 25px; }
+.seta-btn.right { right: 25px; }
+
+.seta-btn:hover { background-color: var(--cor-segundaria); }
+
+/* ==========================================================================
+   4. BARRA DE BUSCA
+   ========================================================================== */
+.search-container {
+    padding: 10px 15px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--cor-segundaria);
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background-color: var(--cor-fundo-site);
+    color: var(--cor-segundaria);
+    transition: 0.3s;
+}
+
+.search-container input:focus {
+    border-color: var(--cor-segundaria);
+    box-shadow: 0 0 5px rgba(43, 45, 66, 0.2);
+}
+
+/* ==========================================================================
+   5. ATUALIZADO: MENU LATERAL PRETO FOSCO (Identidade Oficial Empório-E)
+   ========================================================================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: var(--cor-fundo-menu); /* Preto Fosco Total 🖤 */
+    color: var(--cor-clara);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+    z-index: 200;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+
+.sidebar.active { left: 0; }
+
+/* Linha superior de acabamento em Cinza Chumbo (Cor 2) */
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 2px solid var(--cor-segundaria); /* Cinza Chumbo de limite 🩶 */
+}
+
+.close-btn {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--cor-clara); /* Botão X branco nítido */
+}
+
+.menu-lista { list-style: none; }
+.menu-lista li { border-bottom: 1px solid var(--cor-linha-interna); }
+
+.menu-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--cor-clara); /* Links principais brancos */
+    padding: 18px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* NÍVEL 2: Subcategorias (Fundo levemente cinza bem escuro) */
+.submenu {
+    list-style: none;
+    background-color: rgba(255, 255, 255, 0.03); 
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #e2e8f0; /* Branco fosco suave */
+    padding: 15px 35px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* NÍVEL 3: Marcas e Itens Finais */
+.sub-sub-menu { 
+    background-color: rgba(255, 255, 255, 0.06); 
+}
+
+.sub-item-link {
+    display: block;
+    text-decoration: none;
+    color: #cbd5e1;
+    padding: 12px 55px;
+    font-size: 14px;
+}
+
+/* Setinhas indicadoras discretas em branco suave */
+.seta-icone {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+/* Quando a gaveta abrir, a setinha vira pra baixo e acende em branco total */
+.has-submenu.aberto > .toggle-btn > .seta-icone {
+    transform: rotate(90deg);
+    color: var(--cor-clara);
+}
+
+/* ==========================================================================
+   6. VITRINE DE PRODUTOS CLEAN
+   ========================================================================== */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.products-grid a { text-decoration: none; display: block; }
+
+.product-card {
+    background: var(--cor-fundo-site);
+    border: 1px solid rgba(43, 45, 66, 0.12); 
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: opacity 0.3s ease;
+}
+
+.product-title {
+    font-size: 14px;
+    margin: 8px 0;
+    color: var(--cor-segundaria);
+    min-height: 40px;
+    font-weight: bold;
+}
+
+.product-price { font-size: 16px; font-weight: bold; color: var(--cor-segundaria); }
+.product-parcel { font-size: 12px; color: #777; margin-bottom: 12px; }
+
+.whatsapp-btn {
+    display: block;
+    background: var(--cor-segundaria); /* Botão de detalhes em cinza chumbo */
+    color: var(--cor-clara);
+    text-decoration: none;
+    padding: 10px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.product-card:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.08); transform: translateY(-3px); }
+.product-card:hover img { opacity: 0.8; }
+.whatsapp-btn:hover { background: var(--cor-fundo-menu); }
+
+/* Botão Flutuante do WhatsApp */
+.whatsapp-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+    transition: 0.2s;
+}
+
+.whatsapp-flutuante img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2)); }
+.whatsapp-flutuante:hover { transform: scale(1.1); }
+
+/* ==========================================================================
+   7. REGRAS DE MÍDIA 
+   ========================================================================== */
+@media (min-width: 768px) {
+    .header, .search-container, .products-grid {
+        width: 100%; max-width: 100%; padding-left: 40px; padding-right: 40px; 
+    }
+    .products-grid { grid-template-columns: repeat(4, 1fr); gap: 25px; }
+    
+    .logo-img {
+        max-width: 300px;
+        max-height: 75px;
+    }
+}
+
+/* ==========================================================================
+   8. PÁGINA INDIVIDUAL DO PRODUTO
+   ========================================================================== */
+.produto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: var(--cor-fundo-site);
+    border-bottom: 2px solid var(--cor-segundaria);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.voltar-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--cor-segundaria);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.voltar-link:hover {
+    background-color: rgba(43, 45, 66, 0.08);
+    text-decoration: none;
+}
+
+.produto-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.produto-foto-principal {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.produto-nome {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--cor-segundaria);
+    margin-bottom: 10px;
+}
+
+.produto-preco {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--cor-segundaria);
+    margin-bottom: 20px;
+}
+
+.produto-tamanhos-titulo {
+    font-weight: bold;
+    color: var(--cor-segundaria);
+    margin-bottom: 10px;
+}
+
+.produto-tamanhos-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.produto-tamanho-item {
+    border: 2px solid var(--cor-segundaria);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-weight: bold;
+    color: var(--cor-segundaria);
+}
+
+.produto-whatsapp-btn {
+    display: block;
+    text-align: center;
+    background: var(--cor-whatsapp);
+    color: var(--cor-clara);
+    text-decoration: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.produto-whatsapp-btn:hover { opacity: 0.85; }
+
+@media (min-width: 768px) {
+    .produto-container { max-width: 700px; }
+}
+
+/* ==========================================================================
+   9. RODAPÉ
+   ========================================================================== */
+.site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background: var(--cor-fundo-menu);
+    color: var(--cor-clara);
+    padding: 35px 20px;
+    margin-top: 20px;
+}
+
+.footer-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 140px;
+}
+
+.footer-coluna h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--cor-clara);
+}
+
+.footer-coluna a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-coluna a:hover {
+    color: var(--cor-clara);
+    text-decoration: underline;
+}
+
+.footer-instagram-icone {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--cor-clara);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.footer-instagram-icone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.footer-instagram-icone:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+    .site-footer { padding: 40px; }
+}
